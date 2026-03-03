@@ -46,7 +46,7 @@
 		isNormalUser = true;
 		description = "Meghith";
 		extraGroups = [ "wheel" "networkmanager" "audio" "video" "input" "bluetooth" ];
-		shell = pkgs.bash;
+		shell = pkgs.fish;
 	};
 	security.sudo.wheelNeedsPassword = true;
 
@@ -137,7 +137,16 @@
 			pip
 			virtualenv
 		]))
+		usbutils
+		libmtp
+		jmtpfs
+		steam-run
 	];
+
+	services.udev.packages = with pkgs; [
+		libmtp
+	];
+	programs.xwayland.enable = true;
 
 	services.dbus.enable = true;
 	services.dbus.packages = [ pkgs.kdePackages.kded ];
