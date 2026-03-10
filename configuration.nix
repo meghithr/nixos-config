@@ -101,6 +101,9 @@
 	programs.gamemode.enable = true;
 	programs.nix-ld.enable = true;
 	hardware.rtl-sdr.enable = true;
+	xdg.mime.defaultApplications = {
+		"image/png" = "nomacs.desktop";
+	};
 
 	environment.systemPackages = with pkgs; [
 		vim
@@ -151,6 +154,12 @@
 		hunspell
 		hunspellDicts.en_US
 		rtl-sdr
+		cargo
+		rustc
+		gcc
+		yazi
+		tmux
+		ffmpeg
 	];
 
 	services.udev.packages = with pkgs; [
